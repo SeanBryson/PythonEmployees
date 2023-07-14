@@ -156,6 +156,35 @@ def Update_FirstName():
 
         # Function to Display All Employees
         # from Employee Table
+
+# Function to Update Last Name
+def Update_LastName():
+    Id = int(input("Enter Employee Id"))
+ 
+    # Checking if Employee with given Id
+    # Exist or Not
+    if(check_employee(Id) == False):
+        print("Employee does not exists\nTry Again\n")
+        menu()
+    else:
+        fname = input("Enter new last name")
+ 
+        # Query to Update Last Name of Employee with
+        # given Id
+        sql = 'update emp set lastname=%s where id=%s'
+        d = (fname, Id)
+ 
+        # Executing the SQL Query
+        c = con.cursor()
+        c.execute(sql, d)
+ 
+        # commit() method to make changes in the table
+        con.commit()
+        print("Employee Name Updated")
+        menu()
+
+        # Function to Display All Employees
+        # from Employee Table
  
 def Display_Employees():
      
@@ -189,9 +218,10 @@ def menu():
 	print("1 to Add Employee")
 	print("2 to Remove Employee")
     print("3 to Update Employee First Name")    
-    print("4 to Update Salary")
-	print("5 to Display Employees")
-	print("6 to Exit")
+    print("4 to Update Employee First Name")  
+    print("5 to Update Salary")
+	print("6 to Display Employees")
+	print("7 to Exit")
 	
 	# Taking choice from user
 	ch = int(input("Enter your Choice "))
@@ -202,15 +232,18 @@ def menu():
 		Remove_Employ()
                           
     elif ch == 3:
-		Update_FirstName()
-		
-	elif ch == 4:
-		Update_Salary()
+        Update_FirstName()
+
+    elif ch == 4:
+        Update_FirstName()
 		
 	elif ch == 5:
-		Display_Employees()
+		Update_Salary()
 		
 	elif ch == 6:
+		Display_Employees()
+		
+	elif ch == 7:
 		exit(0)
 		
 	else:
