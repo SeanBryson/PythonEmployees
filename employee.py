@@ -1,4 +1,4 @@
-import mysql.connector
+import mysql.connector;
 
 con = mysql.connector.connect(
     host="localhost", user="root", password="root", database="emp")
@@ -41,14 +41,16 @@ def Add_Employ():
         menu()
      
     else:
-        Name = input("Enter Employee Name : ")
-        Post = input("Enter Employee Post : ")
+        FirstName = input("Enter First Name : ")
+        LastName = input("Enter Last Name : ")
+        DOE = input("Enter Date of Employment : ")
         Salary = input("Enter Employee Salary : ")
-        data = (Id, Name, Post, Salary)
+        Department = input("Enter Department : ")
+        data = (Id, FirstName, LastName, DOE, Salary, Department)
  
         # Inserting Employee details in the Employee
         # Table
-        sql = 'insert into empd values(%s,%s,%s,%s)'
+        sql = 'insert into emp values(%s,%s,%s,%s,%s,%s)'
         c = con.cursor()
  
         # Executing the SQL Query
@@ -72,7 +74,7 @@ def Remove_Employ():
 	else:
 		
 		# Query to Delete Employee from Table
-		sql = 'delete from empd where id=%s'
+		sql = 'delete from emp where id=%s'
 		data = (Id,)
 		c = con.cursor()
 
@@ -99,7 +101,7 @@ def Promote_Employee():
  
         # Query to Fetch Salary of Employee with
         # given Id
-        sql = 'select salary from empd where id=%s'
+        sql = 'select salary from emp where id=%s'
         data = (Id,)
         c = con.cursor()
  
@@ -112,7 +114,7 @@ def Promote_Employee():
  
         # Query to Update Salary of Employee with
         # given Id
-        sql = 'update empd set salary=%s where id=%s'
+        sql = 'update emp set salary=%s where id=%s'
         d = (t, Id)
  
         # Executing the SQL Query
@@ -130,7 +132,7 @@ def Display_Employees():
      
     # query to select all rows from
     # Employee Table
-    sql = 'select * from empd'
+    sql = 'select * from emp'
     c = con.cursor()
      
     # Executing the SQL Query
