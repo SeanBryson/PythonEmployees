@@ -1,7 +1,7 @@
-import mysql.connector;
+#import mysql.connector;
 
-con = mysql.connector.connect(
-    host="localhost", user="root", password="root", database="emp")
+#con = mysql.connector.connect(
+#    host="localhost", user="root", password="root", database="emp")
 
 # Function To Check if Employee with
 # given Id Exist or Not
@@ -157,7 +157,7 @@ def menu():
 	print("Press ")
 	print("1 to Add Employee")
 	print("2 to Remove Employee ")
-	print("3 to Promote Employee")
+	print("3 to Update Employee")
 	print("4 to Display Employees")
 	print("5 to Exit")
 	
