@@ -188,9 +188,10 @@ def menu():
 	print("Press ")
 	print("1 to Add Employee")
 	print("2 to Remove Employee")
-	print("3 to Update Salary")
-	print("4 to Display Employees")
-	print("5 to Exit")
+    print("3 to Update Employee First Name")    
+    print("4 to Update Salary")
+	print("5 to Display Employees")
+	print("6 to Exit")
 	
 	# Taking choice from user
 	ch = int(input("Enter your Choice "))
@@ -199,14 +200,17 @@ def menu():
 		
 	elif ch == 2:
 		Remove_Employ()
-		
-	elif ch == 3:
-		Update_Salary()
+                          
+    elif ch == 3:
+		Update_FirstName()
 		
 	elif ch == 4:
-		Display_Employees()
+		Update_Salary()
 		
 	elif ch == 5:
+		Display_Employees()
+		
+	elif ch == 6:
 		exit(0)
 		
 	else:
