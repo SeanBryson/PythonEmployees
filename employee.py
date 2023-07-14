@@ -1,7 +1,7 @@
-#import mysql.connector;
+import mysql.connector;
 
-#con = mysql.connector.connect(
-#    host="localhost", user="root", password="root", database="emp")
+con = mysql.connector.connect(
+    host="localhost", user="root", password="root", database="emp")
 
 # Function To Check if Employee with
 # given Id Exist or Not
@@ -87,14 +87,14 @@ def Remove_Employ():
 		print("Employee Removed")
 		menu()
 
-# Function to Promote Employee
-def Promote_Employee():
-    Id = int(input("Enter Employ's Id"))
+# Function to Update Salary
+def Update_Salary():
+    Id = int(input("Enter Employee Id"))
  
     # Checking if Employee with given Id
     # Exist or Not
     if(check_employee(Id) == False):
-        print("Employee does not  exists\nTry Again\n")
+        print("Employee does not exists\nTry Again\n")
         menu()
     else:
         Amount = int(input("Enter increase in Salary"))
@@ -126,7 +126,36 @@ def Promote_Employee():
         menu()
 
         # Function to Display All Employees
-# from Employee Table
+        # from Employee Table
+
+# Function to Update First Name
+def Update_FirstName():
+    Id = int(input("Enter Employee Id"))
+ 
+    # Checking if Employee with given Id
+    # Exist or Not
+    if(check_employee(Id) == False):
+        print("Employee does not exists\nTry Again\n")
+        menu()
+    else:
+        fname = input("Enter new first name")
+ 
+        # Query to Update First Name of Employee with
+        # given Id
+        sql = 'update emp set firstname=%s where id=%s'
+        d = (fname, Id)
+ 
+        # Executing the SQL Query
+        c = con.cursor()
+        c.execute(sql, d)
+ 
+        # commit() method to make changes in the table
+        con.commit()
+        print("Employee Name Updated")
+        menu()
+
+        # Function to Display All Employees
+        # from Employee Table
  
 def Display_Employees():
      
@@ -143,9 +172,11 @@ def Display_Employees():
     r = c.fetchall()
     for i in r:
         print("Employee Id : ", i[0])
-        print("Employee Name : ", i[1])
-        print("Employee Post : ", i[2])
-        print("Employee Salary : ", i[3])
+        print("Employee First Name : ", i[1])
+        print("Employee Last Name : ", i[2])
+        print("Date of Employment : ", i[3])
+        print("Employee Salary : ", i[4])
+        print("Employee Salary : ", i[5])
         print("-----------------------------\
         -------------------------------------\
         -----------------------------------")
@@ -156,8 +187,8 @@ def menu():
 	print("Welcome to Employee Management Record")
 	print("Press ")
 	print("1 to Add Employee")
-	print("2 to Remove Employee ")
-	print("3 to Update Employee")
+	print("2 to Remove Employee")
+	print("3 to Update Salary")
 	print("4 to Display Employees")
 	print("5 to Exit")
 	
@@ -170,7 +201,7 @@ def menu():
 		Remove_Employ()
 		
 	elif ch == 3:
-		Promote_Employee()
+		Update_Salary()
 		
 	elif ch == 4:
 		Display_Employees()
